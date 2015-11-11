@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" ng-app="stuInfo">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>浙江大学电气工程学院研究生管理信息系统</title>
+    <script src="/bower_components/jquery/dist/jquery.min.js" ></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js" ></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/ng-table/dist/ng-table.js"></script>
+
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bower_components/ng-table/dist/ng-table.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+
+
+    <script src="/javascripts/app.js"></script>
+
+    <!--controller-->
+    <script src="/javascripts/controllers/allInfoCtrl.js"></script>
+    <script src="/javascripts/controllers/indexCtrl.js"></script>
+    <!--directieve-->
+    <script src="/javascripts/directives/autoHeight.js"></script>
+</head>
+<body class="container" auto-height>
+    <div id="header">
+        header
+    </div>
+    <div id="main-wrap" class="row">
+        <div id="sd" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <div id="sdWrap" class="btn-group-vertical" role="group" aria-label="...">
+                <button class="btn btn-default">
+                    <a href="#/info/all">
+                        所有信息
+                    </a>
+                </button>
+                <button class="btn btn-default">新生信息</button>
+                <button class="btn btn-default">贫困生信息</button>
+            </div>
+        </div>
+        <div id="bd" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <div ng-view></div>
+        </div>
+    </div>
+    <div id="footer">
+        footer
+    </div>
+</body>
+</html>

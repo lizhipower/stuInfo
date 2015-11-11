@@ -1,0 +1,18 @@
+<div id="allInfo">
+    <!--<button ng-click="allInfo.doRefresh()">Refresh</button>-->
+    <table ng-table="allInfo.tableParams"  show-sortable="'name'" filter="true" class=" table table-hover table-condensed table-bordered">
+        <tr ng-repeat="stu in $data">
+            <td class="text-center" data-title="'Num'" sortable="'num'" filter="{num:'number'}">{{stu.num}}</td>
+            <td class="text-center" data-title="'StuID'" sortable="'stuID'" filter="{stuID:'text'}">{{stu.stuID}}</td>
+            <td class="text-center" data-title="'Name'" sortable="'name'" filter="{name:'text'}">{{stu.name}}</td>
+            <td class="text-center" data-title="'ClassName'" sortable="'class'" filter="{class:'text'}">{{stu.class}}</td>
+            <td class="text-center" data-title="'Gender'" sortable="'sex'" filter="{sex:'text'}">{{stu.sex}}</td>
+            <td class="text-center" data-title="'Tel'" sortable="'lonTel'" filter="{lonTel:'text'}">{{stu.lonTel}}</td>
+            <td class="text-center" data-title="'TeacherName'" sortable="'teacher'" filter="{teacher:'text'}">{{stu.teacher}}</td>
+            <td class="text-center" data-title="'Major'" sortable="'major'" filter="{major:'text'}">{{stu.major}}</td>
+        </tr>
+    </table>
+</div>
+
+
+

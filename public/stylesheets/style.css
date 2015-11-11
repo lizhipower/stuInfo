@@ -1,0 +1,28 @@
+.container {
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+#header {
+    height: 50px;
+    background-color: #0b97c4;
+}
+#sd {
+    background-color: palevioletred;
+}
+#sdWrap {
+    width: 100%;
+}
+#bd {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/*.tbd {*/
+    /*overflow-x: hidden;*/
+    /*overflow-y: scroll;*/
+/*}*/
+#footer {
+    height: 20px;
+    background-color: deepskyblue;
+}

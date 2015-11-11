@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+</head>
+<body>
+<h1>Completed</h1>
+<table>
+    <!--<thead>-->
+    <tr>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>生日</td>
+        <td>学号</td>
+    </tr>
+    <!--</thead>-->
+    <!--<tbody>-->
+    <tr>
+        <td><%= content.name %></td>
+        <td><%= content.sex %></td>
+        <td><%= content.birthday %></td>
+        <td><%= content.studentID %></td>
+    </tr>
+
+    <tr>
+        <td>学院</td>
+        <td>专业班级</td>
+        <td>联系电话</td>
+    </tr>
+    <tr>
+        <td><%= content.department %></td>
+        <td><%= content.major %></td>
+        <td><%= content.tel %></td>
+    </tr>
+    <tr>
+        <td>出国（境）地点</td>
+    </tr>
+    <tr>
+        <td><%= content.destination %></td>
+    </tr>
+
+    <tr>
+        <td>出国（境）事由</td>
+    </tr>
+    <tr>
+        <td><%= content.reason %></td>
+    </tr>
+    <tr>
+        <td>出国（境）时间</td>
+    </tr>
+    <tr>
+        <td><%= content.duration %></td>
+    </tr>
+    <tr>
+        <td>学院意见</td>
+    </tr>
+    <tr>
+        <td><%= content.approvalDep %></td>
+    </tr>
+
+    <tr>
+        <td>保卫处意见</td>
+    </tr>
+    <tr>
+        <td><%= content.approvalSeq %></td>
+    </tr>
+    <!--</tbody>-->
+</table>
+</body>
+</html>

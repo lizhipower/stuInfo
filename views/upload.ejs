@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <form action="/fileupload" enctype="multipart/form-data" method="post">
+        Srcfile<input type="file" name="uploadSrc" multiple="multiple"/>
+        Tarfile<input type="file" name="uploadTar" multiple="multiple"/>
+        <input type="submit"/>
+    </form>
+
+</body>
+</html>
+

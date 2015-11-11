@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <!--<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>-->
+    <!--<script type="application/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>-->
+    <!--<script type="application/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+</head>
+<body>
+    <h3>Register</h3>
+
+    <form name="registerForm" action="/doSubmit" method="get"
+            class="">
+        <div class="form-group" >
+            <label for="name">姓名</label><input type="text" id="name" name="name"/>
+            <label for="sex">性别</label><input type="text" id="sex" name="sex"/>
+            <label for="birthday">生日</label><input type="text" id="birthday" name="birthday"/>
+            <label for="studentID">学号</label><input type="text" id="studentID" name="studentID"/>
+        </div>
+
+        <div>
+            <label for="department">学院</label><input type="text" id="department" name="department"/>
+            <label for="major">专业班级</label><input type="text" id="major" name="major"/>
+            <label for="tel">联系电话</label><input type="text" id="tel" name="tel"/>
+        </div>
+
+        <div>
+            <label for="destination">出国（境）地点</label><textarea name="destination" id="destination" cols="30" rows="1"></textarea>
+        </div>
+
+        <div>
+            <label for="reason">出国（境）事由</label><textarea name="reason" id="reason" cols="30" rows="1"></textarea>
+
+        </div>
+
+        <div>
+            <label for="duration">出国（境）时间</label><textarea name="duration" id="duration" cols="30" rows="1"></textarea>
+
+        </div>
+
+        <div>
+            <label for="approvalDep">学院意见</label><textarea name="approvalDep" id="approvalDep" cols="30" rows="10"></textarea>
+        </div>
+
+        <div>
+            <label for="approvalSeq">保卫处意见</label><textarea name="approvalSeq" id="approvalSeq" cols="30" rows="10"></textarea>
+
+        </div>
+        <input type="submit" value="Submit"/>
+
+    </form>
+</body>
+</html>

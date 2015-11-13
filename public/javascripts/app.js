@@ -15,6 +15,10 @@ stuInfo.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/partials/all.html'
             ,controller: 'allInfoCtrl as allInfo'
         })
+        .when('./info/new',{
+            templateUrl: '/partials/new.html'
+            ,controller: 'newInfoCtrl as newInfo'
+        })
         .otherwise({
             redirectTo: '/'
         }

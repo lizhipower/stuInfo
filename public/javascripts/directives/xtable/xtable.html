@@ -1,0 +1,43 @@
+<table ng-table-dynamic="table with column"  class="table table-hover table-bordered row" ng-click="doReset($event, $data)">
+    <colgroup>
+        <col ng-repeat="width in colwidth track by $index" width="{{width}}"/>
+    </colgroup>
+   <tr class="tr-input" ng-repeat="row in $data">
+       <td class="text-center" ng-repeat="col in $columns">
+           <span
+                   ng-if="col.dataType !== 'command' && !row.isEditing"
+                   >
+               {{row[col.field]}}
+           </span>
+           <span
+                   ng-if="col.dataType !== 'command' && col.field == 'index' && row.isEditing"
+                   >
+               {{row[col.field]}}
+           </span>
+           <div ng-if="col.dataType !== 'command' && col.field !== 'index' && row.isEditing">
+               <input
+                       name="{{col.field}}"
+                       ng-model="row[col.field]"
+                       class="input-sm"/>
+           </div>
+           <button
+                   class="btn-sm glyphicon glyphicon-pencil"
+                   ng-if="col.dataType == 'command' && !row.isEditing"
+                   ng-click="doEdit(row)"></button>
+           <button
+                   class="btn-sm btn-danger glyphicon glyphicon-trash"
+                   ng-if="col.dataType == 'command' && !row.isEditing"
+                   ng-click="doRemove(row)"></button>
+
+           <button
+                   class="btn-sm glyphicon glyphicon-ok"
+                   ng-if="col.dataType == 'command' && row.isEditing"
+                   ng-click="doConfirm(row)"></button>
+           <button
+                   class="btn-sm glyphicon glyphicon-remove"
+                   ng-if="col.dataType == 'command' && row.isEditing"
+                   ng-click="doCancel(row)"></button>
+       </td>
+
+   </tr>
+</table>

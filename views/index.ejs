@@ -17,10 +17,16 @@
     <script src="/javascripts/app.js"></script>
 
     <!--controller-->
-    <script src="/javascripts/controllers/allInfoCtrl.js"></script>
     <script src="/javascripts/controllers/indexCtrl.js"></script>
+    <script src="/javascripts/controllers/allInfoCtrl.js"></script>
+    <script src="/javascripts/controllers/newInfoCtrl.js"></script>
+
     <!--directieve-->
     <script src="/javascripts/directives/autoHeight.js"></script>
+    <script src="/javascripts/directives/xtable/xtable.js"></script>
+    <!--service-->
+    <script src="/javascripts/services/newInfoService.js"></script>
+
 </head>
 <body class="container" auto-height>
     <div id="header">
@@ -34,7 +40,11 @@
                         所有信息
                     </a>
                 </button>
-                <button class="btn btn-default">新生信息</button>
+                <button class="btn btn-default">
+                    <a href="#/info/new">
+                        新生信息
+                    </a>
+                </button>
                 <button class="btn btn-default">贫困生信息</button>
             </div>
         </div>

@@ -3,7 +3,6 @@
  */
 (function () {
     stuInfo.directive('xtable', function (newInfoService) {
-
             return {
             restrict: 'E'
             ,scope: {
@@ -18,8 +17,17 @@
                     scope.doCancel = doCancel;
                     scope.doConfirm = doConfirm;
                     scope.doReset = doReset;
-
+                    scope.save = save;
+                    scope.isChange = false;
+                    function save()  {
+                        newInfoService.save();
+                        scope.isChange = false;
+                    }
+                    function changed() {
+                        scope.isChange = true;
+                    }
                     function doEdit(row) {
+                        //newInfoService.reset();
                         var index = row.index;
 
                         console.log('rowEdit row: ', row);
@@ -27,7 +35,7 @@
                         row.initialStateRow = angular.copy(row);
                         row.initialStateRow.isEditing = false;
                         row.isEditing = true;
-                        console.log(row);
+                        //console.log(row);
                     }
                     function doRemove(row) {
                         var index = row.index;
@@ -35,10 +43,16 @@
 
                         console.log('doRemove: ', row);
                         newInfoService.remove(index);
+                        changed();
                     }
                     function doConfirm(row) {
-                        console.log('rowConfirm: ', row);
+                        //console.log('rowConfirm: ', row);
+                        var index = row.index;
+                        console.log(row.initialStateRow);
+
+                        newInfoService.confirm(index, row.initialStateRow, row);
                         row.isEditing = false;
+                        changed();
                     }
                     function doCancel(row) {
                         angular.forEach(row.initialStateRow, function (val, key) {
@@ -50,7 +64,7 @@
 
                     }
                     function doReset($event) {
-                        console.log($event.target.tagName);
+                        //console.log($event.target.tagName);
                         var targetName = $event.target.tagName.toUpperCase();
                         if ( targetName!== 'BUTTON' && targetName != 'INPUT') {
                             newInfoService.reset();
@@ -61,20 +75,3 @@
         }
     })
 })();
-
-(function () {
-        stuInfo.directive('xtableRow', function () {
-
-            return {
-                restrict: 'E'
-                ,scope: {
-                    ele: '='
-                }
-                ,template: '<td>{{scope.ele}}</td>'
-                ,link: function (scope, element, attrs) {
-                }
-            }
-        })
-    }
-
-)();

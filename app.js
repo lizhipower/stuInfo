@@ -5,14 +5,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var index = require('./routes/index');
 var users = require('./routes/users');
 var register = require('./routes/register');
 var doSubmit = require('./routes/doSubmit');
 var fileupload = require('./routes/fileupload');
 var dbAll = require('./routes/dbAll');
 var app = express();
-
+//app.configure(function() {
+//    app.use(express.bodyParser()); // used to parse JSON object given in the request body
+//});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -26,13 +28,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+//app.post('/dbNew', function(req, res) {
+//    res.send('Username: ' + req.body.username);
+//});
+app.use('/', index);
 app.use('/users', users);
 app.use('/register', register);
 app.use('/doSubmit', doSubmit);
 app.use('/fileupload', fileupload);
 app.use('/dbAll', dbAll);
-
+//app.post('/dbNew', function (req, res) {
+//  console.log(req.body);
+//})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

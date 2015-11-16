@@ -7,20 +7,18 @@ var stuInfo =angular.module('stuInfo',[
     ,'ngTable'
 ]);
 
-//console.log('hi');
 stuInfo.config(['$routeProvider', function ($routeProvider) {
-    //console.log('hhh');
     $routeProvider
         .when('/info/all',{
             templateUrl: '/partials/all.html'
             ,controller: 'allInfoCtrl as allInfo'
         })
-        .when('./info/new',{
+        .when('/info/new',{
             templateUrl: '/partials/new.html'
             ,controller: 'newInfoCtrl as newInfo'
         })
         .otherwise({
-            redirectTo: '/'
+            redirectTo: '/info/all'
         }
     );
 }]);

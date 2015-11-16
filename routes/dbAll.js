@@ -11,7 +11,7 @@ var dbName = 'student';
 
 var db = dbMongo(dbAdderss, dbName);
 var dbCollection = 'info';
-
+console.log('dbAll');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     //console.log(req);
@@ -28,6 +28,34 @@ router.get('/', function(req, res, next) {
     function sendData (data) {
         res.send(data);
         console.log('sent');
+        res.end();
+    }
+
+});
+
+router.post('/', function(req, res, next) {
+    //console.log(req.body);
+    //console.log(req.body.data);
+    var data = req.body.data;
+    var editArr = data.editArr;
+    var removeArr = data.removeArr;
+
+    db.open(function(err, db) {
+        if(!err) {
+            console.log("db Student are connected");
+            editArr.forEach(function (ele) {
+                dbUtil.selectEle(db,dbCollection,ele.data,showData);
+                dbUtil.update(db, dbCollection, ele.data, ele.newData)
+
+            });
+        }
+    });
+    function showData (data) {
+        console.log(data);
+    }
+    function sendData (data) {
+        res.send(data);
+        console.log('post sent');
         res.end();
     }
 

@@ -4,7 +4,8 @@
 <table ng-table-dynamic="table with column" show-filter="true"  class="table table-hover table-bordered " ng-click="doReset($event, $data)">
 
    <tr ng-repeat="row in $data" ng-click="doToggle($event,row)">
-       <td class="text-center" ng-repeat="col in $columns">
+       <td class="text-center" ng-repeat="col in $columns"
+               style="width: 120px;">
            <span
                    ng-if="col.field !== 'command' && !row.isEditing">
                {{row[col.field]}}

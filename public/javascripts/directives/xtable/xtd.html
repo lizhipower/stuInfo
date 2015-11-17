@@ -1,13 +1,20 @@
-<ul ng-if="!status">
-    <li ng-repeat="col in cols" style="float: left; display: block; margin-right: 20px">
-        {{col}}: {{data[col]}}
-    </li>
-</ul>
-<ul ng-if="status">
-    <li ng-repeat="col in cols" style="float: left; display: block; margin-right: 20px">
-        {{col}}: <input
-               name="{{col}}"
-               ng-model="data[col]"
-               class="input-sm"/>
-    </li>
-</ul>
+<div ng-if="!status">
+    <dl class="dl-horizontal" ng-repeat="col in cols" style="float: left">
+        <dt>{{col}}</dt>
+        <dd style="width: 180px;">
+            {{data[col]}}
+        </dd>
+    </dl>
+</div>
+<div ng-if="status">
+    <dl class="dl-horizontal" ng-repeat="col in cols" style="float: left">
+        <dt>{{col}}</dt>
+        <dd>
+            <input
+                    style="width: 180px;"
+                    name="{{col}}"
+                    ng-model="data[col]"
+                    class="input-sm"/>
+        </dd>
+    </dl>
+</div>

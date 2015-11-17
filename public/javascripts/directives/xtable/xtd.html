@@ -1,0 +1,13 @@
+<ul ng-if="!status">
+    <li ng-repeat="col in cols" style="float: left; display: block; margin-right: 20px">
+        {{col}}: {{data[col]}}
+    </li>
+</ul>
+<ul ng-if="status">
+    <li ng-repeat="col in cols" style="float: left; display: block; margin-right: 20px">
+        {{col}}: <input
+               name="{{col}}"
+               ng-model="data[col]"
+               class="input-sm"/>
+    </li>
+</ul>

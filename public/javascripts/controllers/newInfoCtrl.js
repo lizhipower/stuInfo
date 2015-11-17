@@ -8,11 +8,13 @@
         var promise = newInfoService.query();
         promise.then(stuInfoMain);
         function stuInfoMain(data) {
+
             stuInfoData = data;
+            vm.data = stuInfoData;
             colName = newInfoService.column;
-            console.log(colName);
+            //console.log(colName);
             vm.column = formCol(colName);
-            console.log(vm.column);
+            //console.log(vm.column);
             vm.table = new ngTableParams(
                 {
                     page: 1,
@@ -65,7 +67,7 @@
         function formCol (colName) {
             var column = [];
             var ignoreCol = newInfoService.ignoreCol;
-            console.log(ignoreCol);
+            //console.log(ignoreCol);
             angular.forEach(colName, function(col) {
                 if (ignoreCol.indexOf(col) == -1){
                     var colEle = {};

@@ -9,11 +9,11 @@
                     table: '='
                     ,column: "="
                     ,colwidth: '='
+                    ,data: "="
             }
             ,templateUrl:'./javascripts/directives/xtable/xtable.html'
             ,link: function (scope, element, attrs) {
                     var toggleFlag = false;
-                    //var toggleEle;
                     var addEle;
                     scope.doEdit = doEdit;
                     scope.doRemove = doRemove;
@@ -23,18 +23,28 @@
                     scope.save = save;
                     scope.isChange = false;
                     scope.doToggle = doToggle;
-                    function doToggle(event) {
+
+                    //scope.data = newInfoService.data;
+                    scope.cols = newInfoService.ignoreCol;
+
+                    function doToggle(event,row) {
                         //console.log(event.target.parentNode);
-                        var tr = angular.element(event.target.parentNode);
+                        var index = row.index;
+                        scope.isEditing = row.isEditing;
+                        scope.eleData = scope.data[index-1];
+
+                        var tarEle = angular.element(event.target);
+                        if (event.target.nodeName.toUpperCase() == 'BUTTON') {
+                            return;
+                        }
+                        var tr = tarEle.parent('tr');
+                        //console.log('row',tr);
                         var trScope = tr.scope();
-                        console.log(tr);
                         if (!toggleFlag) {
-                            addEle = angular.element('<tr><td colspan="{{$columns.length}}">yoooo</td></tr>');
+                            addEle = angular.element('<tr><td colspan="{{$columns.length}}"><xtd data="eleData" cols="cols" status="isEditing"></xtd></td></tr>');
                             toggleEle = tr.after($compile(addEle)(trScope));
-                            console.log(addEle);
                             toggleFlag = !toggleFlag;
                         } else {
-                            console.log(addEle);
 
                             addEle.remove();
                             toggleFlag = !toggleFlag;
@@ -72,7 +82,7 @@
                         //console.log('rowConfirm: ', row);
                         var index = row.index;
                         console.log(row.initialStateRow);
-
+                        console.log(row);
                         newInfoService.confirm(index, row.initialStateRow, row);
                         row.isEditing = false;
                         changed();
@@ -101,17 +111,16 @@
 })();
 
 (function () {
-    stuInfo.directive('xtr', function () {
+    stuInfo.directive('xtd', function () {
         return {
             restrict: 'E'
-            //,scope: {
-            //    table: '='
-            //    ,column: "="
-            //    ,colwidth: '='
-            //}
-            //,templateUrl:'./javascripts/directives/xtable/xtable.html'
+            ,scope: {
+                data: '='
+                ,cols: "="
+                ,status: "="
+            }
+            ,templateUrl:'./javascripts/directives/xtable/xtd.html'
             ,link: function (scope, element, attrs) {
-
             }
         }
     })

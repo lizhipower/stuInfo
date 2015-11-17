@@ -47,7 +47,7 @@
                 var deffered = $q.defer();
                 $http.get(urlAll).success(function (data) {
                     service.data = data;
-                    console.log(data);
+                    //console.log(data);
                     addIndex();
                     getColumn();
 
@@ -70,17 +70,17 @@
                 $rootScope.$broadcast('reRender');
             }
             function getColumn() {
-                console.log(service.data);
+                //console.log(service.data);
                 var data = service.data[0];
-                console.log('getCol', data);
+                //console.log('getCol', data);
                 column = [];
                 angular.forEach(data, function (val, key) {
-                    console.log(key);
+                    //console.log(key);
                     if (key !== '_id' && key !== 'index'){
                         column.push(key);
                     }
                 });
-                console.log(column);
+                //console.log(column);
                 service.column = column;
             }
             function doBackup () {

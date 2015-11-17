@@ -2,7 +2,7 @@
  * Created by Dell on 2015/11/12.
  */
 (function () {
-    stuInfo.directive('xtable', function (newInfoService) {
+    stuInfo.directive('xtable', function (newInfoService,$compile) {
             return {
             restrict: 'E'
             ,scope: {
@@ -12,6 +12,9 @@
             }
             ,templateUrl:'./javascripts/directives/xtable/xtable.html'
             ,link: function (scope, element, attrs) {
+                    var toggleFlag = false;
+                    //var toggleEle;
+                    var addEle;
                     scope.doEdit = doEdit;
                     scope.doRemove = doRemove;
                     scope.doCancel = doCancel;
@@ -19,6 +22,26 @@
                     scope.doReset = doReset;
                     scope.save = save;
                     scope.isChange = false;
+                    scope.doToggle = doToggle;
+                    function doToggle(event) {
+                        //console.log(event.target.parentNode);
+                        var tr = angular.element(event.target.parentNode);
+                        var trScope = tr.scope();
+                        console.log(tr);
+                        if (!toggleFlag) {
+                            addEle = angular.element('<tr><td colspan="{{$columns.length}}">yoooo</td></tr>');
+                            toggleEle = tr.after($compile(addEle)(trScope));
+                            console.log(addEle);
+                            toggleFlag = !toggleFlag;
+                        } else {
+                            console.log(addEle);
+
+                            addEle.remove();
+                            toggleFlag = !toggleFlag;
+
+
+                        }
+                    }
                     function save()  {
                         newInfoService.save();
                         scope.isChange = false;
@@ -67,10 +90,28 @@
                         //console.log($event.target.tagName);
                         var targetName = $event.target.tagName.toUpperCase();
                         if ( targetName!== 'BUTTON' && targetName != 'INPUT') {
-                            newInfoService.reset();
+                            //TODO
+                            //newInfoService.reset();
                         }
 
                     }
+            }
+        }
+    })
+})();
+
+(function () {
+    stuInfo.directive('xtr', function () {
+        return {
+            restrict: 'E'
+            //,scope: {
+            //    table: '='
+            //    ,column: "="
+            //    ,colwidth: '='
+            //}
+            //,templateUrl:'./javascripts/directives/xtable/xtable.html'
+            ,link: function (scope, element, attrs) {
+
             }
         }
     })

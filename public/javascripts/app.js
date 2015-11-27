@@ -10,13 +10,14 @@ var stuInfo =angular.module('stuInfo',[
 stuInfo.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/info/all',{
-            templateUrl: '/partials/all.html'
+            templateUrl: '/partials/allInfo.html'
             ,controller: 'allInfoCtrl as allInfo'
         })
-        .when('/info/new',{
-            templateUrl: '/partials/new.html'
+        .when('/info/all',{
+            templateUrl: '/partials/newInfo.html'
             ,controller: 'newInfoCtrl as newInfo'
         })
+
         .otherwise({
             redirectTo: '/info/all'
         }

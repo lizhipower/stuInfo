@@ -2,7 +2,7 @@
  * Created by Dell on 2015/11/12.
  */
 (function () {
-    stuInfo.directive('xtable', function (newInfoService,$compile) {
+    stuInfo.directive('xtable', function (allInfoService,$compile) {
             return {
             restrict: 'E'
             ,scope: {
@@ -24,15 +24,18 @@
                     scope.isChange = false;
                     scope.doToggle = doToggle;
 
-                    //scope.data = newInfoService.data;
-                    scope.cols = newInfoService.ignoreCol;
+                    //scope.data = allInfoService.data;
+                    scope.$on('ignoreCol', function () {
+                        scope.cols = allInfoService.ignoreCol;
 
+                    });
+                    console.log(scope.cols);
                     function doToggle(event,row) {
                         //console.log(event.target.parentNode);
                         var index = row.index;
                         scope.isEditing = row.isEditing;
                         scope.eleData = scope.data[index-1];
-
+                        console.log(scope.eleData);
                         var tarEle = angular.element(event.target);
                         if (event.target.nodeName.toUpperCase() == 'BUTTON') {
                             return;
@@ -53,14 +56,14 @@
                         }
                     }
                     function save()  {
-                        newInfoService.save();
+                        allInfoService.save();
                         scope.isChange = false;
                     }
                     function changed() {
                         scope.isChange = true;
                     }
                     function doEdit(row) {
-                        //newInfoService.reset();
+                        //allInfoService.reset();
                         var index = row.index;
 
                         console.log('rowEdit row: ', row);
@@ -75,7 +78,7 @@
                         console.log('index: ', index);
 
                         console.log('doRemove: ', row);
-                        newInfoService.remove(index);
+                        allInfoService.remove(index);
                         changed();
                     }
                     function doConfirm(row) {
@@ -83,7 +86,7 @@
                         var index = row.index;
                         console.log(row.initialStateRow);
                         console.log(row);
-                        newInfoService.confirm(index, row.initialStateRow, row);
+                        allInfoService.confirm(index, row.initialStateRow, row);
                         row.isEditing = false;
                         changed();
                     }
@@ -101,7 +104,7 @@
                         var targetName = $event.target.tagName.toUpperCase();
                         if ( targetName!== 'BUTTON' && targetName != 'INPUT') {
                             //TODO
-                            //newInfoService.reset();
+                            //allInfoService.reset();
                         }
 
                     }

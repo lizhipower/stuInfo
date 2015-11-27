@@ -19,13 +19,13 @@
     <!--controller-->
     <script src="/javascripts/controllers/indexCtrl.js"></script>
     <script src="/javascripts/controllers/allInfoCtrl.js"></script>
-    <script src="/javascripts/controllers/newInfoCtrl.js"></script>
+    <!--<script src="/javascripts/controllers/newInfoCtrl.js"></script>-->
 
     <!--directieve-->
     <script src="/javascripts/directives/autoHeight.js"></script>
     <script src="/javascripts/directives/xtable/xtable.js"></script>
     <!--service-->
-    <script src="/javascripts/services/newInfoService.js"></script>
+    <script src="/javascripts/services/allInfoService.js"></script>
 
 </head>
 <body class="container" auto-height>
@@ -33,7 +33,7 @@
         header
     </div>
     <div id="main-wrap" class="row">
-        <div id="sd" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+        <div id="sd" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
             <div id="sdWrap" class="btn-group-vertical" role="group" aria-label="...">
                 <button class="btn btn-default">
                     <a href="#/info/all">
@@ -48,7 +48,7 @@
                 <button class="btn btn-default">贫困生信息</button>
             </div>
         </div>
-        <div id="bd" class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+        <div id="bd" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
             <div ng-view></div>
         </div>
     </div>

@@ -3,10 +3,13 @@
  */
 (function () {
         'use strict';
-        stuInfo.service('newInfoService',newInfoService);
-        function newInfoService($rootScope, $http, $q) {
+        stuInfo.service('allInfoService',allInfoService);
+        function allInfoService($rootScope, $http, $q) {
             var backup = {};
-            var ignoreCol = ['minzu','birth','shtTel','tID','email','polcy','work','hometown','dom','domTel','famAddr','famTel','famZip','labAddr','labTel','perID'];
+            var ignoreCol = [];
+            var showColString = 'num class 学号 姓名 性别 手机 major teacher';
+            var showColArr = showColString.split(' ');
+            console.log(showColArr);
             var column = [];
             var changeLog = {
                 editArr: []
@@ -22,6 +25,7 @@
                 ,confirm: confirm
                 ,reset: reset
                 ,save: save
+                ,showColArr: showColArr
                 ,ignoreCol: ignoreCol
             };
 
@@ -52,6 +56,7 @@
                     getColumn();
 
                     deffered.resolve(data);
+                    //dbUtil.shutdown();
                 });
                 return deffered.promise;
             }
@@ -72,16 +77,23 @@
             function getColumn() {
                 //console.log(service.data);
                 var data = service.data[0];
-                //console.log('getCol', data);
-                column = [];
+                console.log('getCol', data);
+                var column = [];
+                var ignoreCol = [];
                 angular.forEach(data, function (val, key) {
                     //console.log(key);
                     if (key !== '_id' && key !== 'index'){
                         column.push(key);
+                        if (service.showColArr.indexOf(key) == -1) {
+                            ignoreCol.push(key);
+                        }
                     }
                 });
-                //console.log(column);
+                console.log(ignoreCol);
                 service.column = column;
+                service.ignoreCol = ignoreCol;
+                $rootScope.$broadcast('ignoreCol');
+
             }
             function doBackup () {
                 backup = angular.copy(service.data);

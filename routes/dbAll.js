@@ -11,6 +11,8 @@ var dbName = 'student';
 
 var db = dbMongo(dbAdderss, dbName);
 var dbCollection = 'info';
+var masterCollection = 'master';
+var phdCollection = 'phd';
 console.log('dbAll');
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,7 +23,7 @@ router.get('/', function(req, res, next) {
     db.open(function(err, db) {
         if(!err) {
             console.log("db Student are connected");
-            dbUtil.selectEle(db, dbCollection,{}, sendData);
+            dbUtil.selectEle(db, masterCollection,{}, sendData);
         }
     });
 
@@ -29,6 +31,7 @@ router.get('/', function(req, res, next) {
         res.send(data);
         console.log('sent');
         res.end();
+        //dbUtil.shutdown();
     }
 
 });
